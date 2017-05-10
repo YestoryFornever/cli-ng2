@@ -18,7 +18,11 @@ export class HeroListComponent implements OnInit{
   heroes:Hero[];
   selectedHero: Hero;
   onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+    //this.router.navigate(['/detail', hero.id]);
+  }
+  gotoDetail(): void {
     // this.selectedHero = hero;
-    this.router.navigate(['/detail', hero.id]);
+    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 }
