@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
+import { DashBoardComponent } from './dash-board/dash-board.component';
 
 import { HeroService } from './hero.service';
 @NgModule({
@@ -15,7 +16,8 @@ import { HeroService } from './hero.service';
     AppComponent,
     HeroFormComponent,
     HeroDetailComponent,
-    HeroListComponent
+    HeroListComponent,
+    DashBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +25,22 @@ import { HeroService } from './hero.service';
     HttpModule,
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+      },
+      {
         path:'heroes',
         component:HeroListComponent
-      }
+      },
+      {
+        path:'dashboard',
+        component:DashBoardComponent
+      },
+      {
+        path: 'detail/:id',
+        component: HeroDetailComponent
+      },
     ])
   ],
   providers: [HeroService],
